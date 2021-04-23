@@ -1,10 +1,33 @@
 function mood(str) {
-    if (str == "joy")
-    console.log("joy");
+  let MovieImages = [
+    {
+      src: "./MovieImages/joy.jpg",
 
-    else if (str == "sadness")
-    console.log("sadness");
+    },
+    {
+      src: "./MovieImages/anger.jpg",
 
-    else if (str == "anger")
-    console.log("anger");
+    },
+    {
+      src: "./MovieImages/sadness.jpg",
+
     }
+  ]
+
+  let ImageArray = []
+  for (i = 0, j = MovieImages.length; i < j; i++) {
+    ImageArray[i] = new Image(240, 300)
+    ImageArray[i].src = MovieImages[i].src
+  }
+
+  if (str == "Joy")
+    document.body.appendChild(ImageArray[0])
+
+  else if (str == "Sadness")
+    document.body.appendChild(ImageArray[1])
+
+  else if (str == "Anger")
+    document.body.appendChild(ImageArray[2])
+
+}
+
