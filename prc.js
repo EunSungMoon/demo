@@ -4,37 +4,63 @@
 // });
 
 
-// 2222222222
-//꼭할것 :  HTML 에 박혀있는 onclick method 를 js로 빼세요 -> click evt listener를 활용하면됨!
+
+//id =body 라는 dom 을 선택
+
+/* 은성님이 짠 코드
 let click_joy = document.getElementById('joy')
-click_joy.addEventListener("click", function () {
+click_joy.addEventListener("click", () => {
   dom.appendChild(ImageArray[0])
 });
 
 let click_sadness = document.getElementById('sadness')
-click_sadness.addEventListener("click", function () {
+click_sadness.addEventListener("click", () => {
   dom.appendChild(ImageArray[1])
 });
 
-let click_anger = document.getElementById('anger')
-click_anger.addEventListener("click", function () {
+let click_anger = document.getElementById('anger')  == document.querySelector('#anger');
+click_anger.addEventListener("click", () => {
   dom.appendChild(ImageArray[2])
 });
 
-
 let click_reset = document.getElementById('reset')
 click_reset.addEventListener("click", function () {
-
-  //1
-  // 선택자 모르면 mdn 뒤지면서 사용해보기 document.querySelector
-  // let reset =document.querySelector('img')   //<-완성
-  // reset.parentElement.removeChild(reset)
-
-  //그냥 dom 잡아서 innerHTML 로 초기화하기 -> 1줄컷 ㅋ
-  document.getElementById('body').innerHTML = "";
+  document.querySelector('#body').innerHTML ='';
 });
+*/
 
+// 3. 초기화해보기 innerHTML 공부
 
+//1. 함수가 여러개가 중복되는거 같아서 이것저것 해보면 코드량을 줄일수 있지 않을까?
+//2. 일단 버튼을 한번에 다 선택해보자 data-btn 테그를 사용해서 !
+// [ Dom1, Dom2, Dom3, Dom4];
+//3. 배열로 값이 들어왔으닌까 for 문을 돌면서 각각 이벤트를 걸어보자 !
+
+let Btn =document.querySelectorAll('[data-btn="moodBtn"]') // [dom1, dom2, dom3, dom4]
+
+// //이건처음배울떄 쓰는코드
+
+for(let i=0; i<Btn.length; i++){
+  Btn[i].addEventListener("click", ()=>{
+    //1. 초기화를한다
+    document.querySelector('#body').innerHTML ='';
+    //2. 이미지를 붙인다.
+    dom.appendChild(ImageArray[i]);
+  });
+}
+
+// let Btn=document.querySelectorAll('[data-btn="moodBtn"]')
+// for(i=0; i<Btn.length; i++){
+//   Btn[i].addEventListener('click', ()=>{
+//     document.querySelector('#body').innerHTML='';
+//     dom.appendChild(ImageArray[i])
+//   })
+// }
+
+//공부를 해보세용 es6 문법
+// Btn.forEach((v, i) => v.addEventListener('click', e => dom.appendChild(ImageArray[i])));
+
+const dom=document.querySelector('#body')
 
 let MovieImages = [
   {
@@ -51,8 +77,6 @@ let MovieImages = [
   }
 ]
 
-//id =body 라는 dom 을 선택
-const dom = document.querySelector('#body');
 
 let ImageArray = []
 for (i = 0, j = MovieImages.length; i < j; i++) {
@@ -63,10 +87,6 @@ for (i = 0, j = MovieImages.length; i < j; i++) {
 
 
 
-// 3. 초기화해보기 innerHTML 공부
-
-  //리셋짜기ㅋㅋㅋ
-  // img 선택 -> 이미지 부모 선택 -> 이미지 부모에서 자식 지우기
 
 
 
